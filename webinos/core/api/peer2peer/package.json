@@ -1,0 +1,25 @@
+{
+  "name": "app2app",
+  "publishConfig": {
+    "tag": "alpha" 
+  },
+  "description": "Peer2Peer Messaging API",
+  "keywords": [ "webinos", "app2app", "messaging", "API"],
+  "version": "0.0.1",
+  "homepage": "http://webinos.org/",
+  "author": "Fabian Walraven <fabian.walraven@tno.nl> & Richard Logan-Baker <richard@ambiesense.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/richardloganbaker/Webinos-Platform.git"
+  },
+  "bugs": {
+    "email": "webinos-wp4-ml@fokus.fraunhofer.de",
+    "url": "http://jira.webinos.org/browse/WP-218"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/peer2peer.js",
+  "dependencies": {},
+  "bundleDependencies": []
+}
