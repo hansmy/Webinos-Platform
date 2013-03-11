@@ -19,13 +19,13 @@
 (function() {
   var RPCWebinosService = require('webinos-jsonrpc2').RPCWebinosService;
 
-  var Peer2PeerModule = function(rpcHandler, params) {
+  var App2App2Module = function(rpcHandler, params) {
     this.rpcHandler = rpcHandler;
     this.params = params;
   };
   
-  Peer2PeerModule.prototype.init = function (register, unregister) {
-    var service = new Peer2PeerService(this.rpcHandler, this.params);
+  App2App2Module.prototype.init = function (register, unregister) {
+    var service = new App2App2Service(this.rpcHandler, this.params);
     if (isPzh(this.params)) {
       // always register service for pzh
       register(service);
@@ -43,18 +43,18 @@
     }
   };
 
-  var Peer2PeerService = function(rpcHandler, params) {
+  var App2App2Service = function(rpcHandler, params) {
     this.base = RPCWebinosService;
     this.base({
-      api: 'http://webinos.org/api/Peer2Peer',
-      displayName: 'Peer2Peer Messaging API',
-      description: 'The Peer2Peer Messaging API for using channel-based communication between applications.'
+      api: 'http://webinos.org/api/App2App2',
+      displayName: 'New App2App Messaging API',
+      description: 'The New App2App Messaging API for using channel-based communication between applications.'
     });
 
     this.rpcHandler = rpcHandler;
   };
 
-  Peer2PeerService.prototype = new RPCWebinosService();
+  App2App2Service.prototype = new RPCWebinosService();
 
   var CHANNEL_NAMESPACE_REGEXP = /^(urn:[a-z0-9][a-z0-9\-]{0,31}:)([a-z0-9()+,\-.:=@;$_!*'%/?#]+)$/i;
   var CHANNEL_NAMESPACE_WILDCARD = "*";
@@ -66,11 +66,11 @@
   var registeredChannels = {};
 
   /**
-   * Register new peer which is allowed to participate in the Peer2Peer system. Typically the peer represents
+   * Register new peer which is allowed to participate in the App2App2 system. Typically the peer represents
    * a web runtime, which (de)multiplexes callback invocations (e.g., channel requests, messages, search results)
    * to channel clients.
    */
-  Peer2PeerService.prototype.registerPeer = function(params, successCallback, errorCallback, fromObjRef) {
+  App2App2Service.prototype.registerPeer = function(params, successCallback, errorCallback, fromObjRef) {
     var peerId = params.peerId;
     if (peerId === 'undefined' || registeredPeers.hasOwnProperty(peerId)) {
       errorCallback(respondWith("Could not register peer: missing id or already registered."));
@@ -81,7 +81,7 @@
     }
   };
 
-  Peer2PeerService.prototype.unregisterPeer = function(params, successCallback, errorCallback, fromObjRef) {
+  App2App2Service.prototype.unregisterPeer = function(params, successCallback, errorCallback, fromObjRef) {
     var peerId = params.peerId;
     if (typeof peerId === 'undefined') {
       errorCallback(respondWith("Could not unregister peer: missing id."));
@@ -108,7 +108,7 @@
     }
   };
 
-  Peer2PeerService.prototype.createChannel = function(params, successCallback, errorCallback, fromObjRef) {
+  App2App2Service.prototype.createChannel = function(params, successCallback, errorCallback, fromObjRef) {
     var peerId = params.peerId;
     var namespace = params.namespace;
     var properties = params.properties;
@@ -143,7 +143,7 @@
     successCallback(channel);
   };
 
-  Peer2PeerService.prototype.searchForChannels = function(params, successCallback, errorCallback) {
+  App2App2Service.prototype.searchForChannels = function(params, successCallback, errorCallback) {
     var peerId = params.peerId;
     var namespace = params.namespace;
     var zoneIds = params.zoneIds;
@@ -194,7 +194,7 @@
 
   };
 
-  Peer2PeerService.prototype.connectToChannel = function(params, successCallback, errorCallback, fromObjRef) {
+  App2App2Service.prototype.connectToChannel = function(params, successCallback, errorCallback, fromObjRef) {
     var connectRequest = {};
     connectRequest.from = params.from;
     connectRequest.namespace = params.namespace;
@@ -233,7 +233,7 @@
     );
   };
 
-  Peer2PeerService.prototype.sendToChannel = function(params, successCallback, errorCallback) {
+  App2App2Service.prototype.sendToChannel = function(params, successCallback, errorCallback) {
     var from = params.from;
     var to = params.to;
     var namespace = params.namespace;
@@ -297,7 +297,7 @@
 
   };
 
-  Peer2PeerService.prototype.disconnectFromChannel = function(params, successCallback, errorCallback) {
+  App2App2Service.prototype.disconnectFromChannel = function(params, successCallback, errorCallback) {
     var from = params.from;
     var namespace = params.namespace;
 
@@ -362,5 +362,5 @@
     return s4() + s4() + s4();
   }
 
-  exports.Module=Peer2PeerModule;
+  exports.Module=App2App2Module;
 })();

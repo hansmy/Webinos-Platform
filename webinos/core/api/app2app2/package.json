@@ -1,10 +1,10 @@
 {
-  "name": "app2app",
+  "name": "app2app2",
   "publishConfig": {
     "tag": "alpha" 
   },
-  "description": "Peer2Peer Messaging API",
-  "keywords": [ "webinos", "app2app", "messaging", "API"],
+  "description": "New App2App Messaging API",
+  "keywords": [ "webinos", "app2app2", "messaging", "API"],
   "version": "0.0.1",
   "homepage": "http://webinos.org/",
   "author": "Fabian Walraven <fabian.walraven@tno.nl> & Richard Logan-Baker <richard@ambiesense.com>",
@@ -19,7 +19,7 @@
   "directories": {
     "lib": "./lib"
   },
-  "main": "./lib/peer2peer.js",
+  "main": "./lib/app2app2.js",
   "dependencies": {},
   "bundleDependencies": []
 }

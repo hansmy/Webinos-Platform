@@ -36,6 +36,10 @@
       "name"    :"App2App Messaging API",
       "location":"api/app2app/"
     },
+    "app2app2"          :{
+      "name"    :"New App2App Messaging API",
+      "location":"api/app2app2/"
+    },
     "zap-and-shake"    :{
       "name"    :"Zap and Shake (hack)",
       "location":"api/zap-and-shake/"

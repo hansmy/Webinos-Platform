@@ -8,10 +8,10 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>peer2peer</artifactId>
+  <artifactId>app2app2</artifactId>
   <packaging>pom</packaging>
 
-  <name>The Peer2Peer Messaging API</name>
+  <name>The New App2App Messaging API</name>
   <url>http://www.webinos.org</url>
 
   <!-- Uncomment the plugin executions you need. If you're component structure is correct, 
